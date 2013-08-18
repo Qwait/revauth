@@ -1,0 +1,18 @@
+GET         /login                           Auth.login
+POST        /login                           Auth.HandleLogin
+
+GET         /logout                          Auth.logout
+
+GET         /password                        Auth.ChangePassword
+POST        /password                        Auth.HandleChangePassword
+
+GET         /register                        Auth.Register
+POST        /register                        Auth.HandleRegister
+
+GET         /forgot                          Auth.ForgotPassword
+POST        /forgot                          Auth.HandleForgotPassword
+
+GET         /reset/:user_id/:hmac            Auth.ResetPassword
+POST        /reset/:user_id/:hmac            Auth.HandleResetPassword
+
+GET         /revauth/public/*filepath        Static.ServeModule(revauth,public)

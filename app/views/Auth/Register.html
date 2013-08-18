@@ -1,0 +1,73 @@
+{{set . "title" "Register"}}
+{{template "Auth/header.html" .}}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-lg-offset-3">
+            <div class="panel">
+                <form action="" method="POST">
+                    <div class="panel-heading">Register</div>
+                    <div class="panel-body">
+                        {{with $field := field "user.Username" .}}
+                            {{if $field.Error}}
+                                <div class="form-group has-error">
+                            {{else}}
+                                <div class="form-group">
+                            {{end}}
+                                <label class="control-label" for="user.Username">Username</label>
+                                <input type="text" name="user.Username" class="form-control" placeholder="Username" value="{{$field.Flash}}" autofocus>
+                                {{if $field.Error}}
+                                    <p class="help-block">{{$field.Error}}</p>
+                                {{end}}
+                            </div>
+                        {{end}}
+                        {{with $field := field "user.Email" .}}
+                            {{if $field.Error}}
+                                <div class="form-group has-error">
+                            {{else}}
+                                <div class="form-group">
+                            {{end}}
+                                <label class="control-label" for="user.Email">Email Address</label>
+                                <input type="text" name="user.Email" class="form-control" placeholder="Email Address" value="{{$field.Flash}}">
+                                {{if $field.Error}}
+                                    <p class="help-block">{{$field.Error}}</p>
+                                {{end}}
+                            </div>
+                        {{end}}
+                        {{with $field := field "user.Password" .}}
+                            {{if $field.Error}}
+                                <div class="form-group has-error">
+                            {{else}}
+                                <div class="form-group">
+                            {{end}}
+                                <label class="control-label" for="user.Password">Password</label>
+                                <input type="password" name="user.Password" class="form-control" placeholder="Password" value="{{$field.Flash}}">
+                                {{if $field.Error}}
+                                    <p class="help-block">{{$field.Error}}</p>
+                                {{end}}
+                            </div>
+                        {{end}}
+                        {{with $field := field "user.PasswordConfirm" .}}
+                            {{if $field.Error}}
+                                <div class="form-group has-error">
+                            {{else}}
+                                <div class="form-group">
+                            {{end}}
+                                <label class="control-label" for="user.PasswordConfirm">Repeat Password</label>
+                                <input type="password" name="user.PasswordConfirm" class="form-control" placeholder="Repeat Password" value="{{$field.Flash}}">
+                                {{if $field.Error}}
+                                    <p class="help-block">{{$field.Error}}</p>
+                                {{end}}
+                            </div>
+                        {{end}}
+                    </div>
+                    <div class="panel-footer clearfix">
+                        <button class="btn btn-primary pull-right" type="submit">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{template "Auth/footer.html" .}}
