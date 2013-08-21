@@ -46,11 +46,11 @@ func (c Auth) HandleForgotPassword(email string) revel.Result {
     return c.Redirect("forgot")
 }
 
-func (c Auth) ResetPassword() revel.Result {
+func (c Auth) ResetPassword(user_id int, hmac string) revel.Result {
     return c.Render()
 }
 
-func (c Auth) HandleResetPassword() revel.Result {
+func (c Auth) HandleResetPassword(user_id int, hmac string) revel.Result {
     return c.Render()
 }
 
