@@ -23,7 +23,13 @@ func (c Auth) HandleLogin(user *models.User) revel.Result {
         return c.Redirect("login")
     }
 
-    c.Flash.Success("Login Worked")
+    authenticated := c.getGordenManager().Authenticate(map[string]string{"username": user.Email, "password": user.Password})
+    if authenticated {
+        c.Flash.Success("Login Worked")
+        return c.Redirect("login")
+    }
+
+    c.Flash.Error("Incorrect username or password.")
     return c.Redirect("login")
 }
 
